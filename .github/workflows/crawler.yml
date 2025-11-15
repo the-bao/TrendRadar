@@ -46,6 +46,15 @@ jobs:
 
           echo "✅ 配置文件检查通过"
 
+      - name: Quick env check
+        env:
+          NTFY_SERVER_URL: ${{ secrets.NTFY_SERVER_URL }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: |
+          echo "🔍 关键环境变量检查:"
+          echo "ntfy Server: $([ -n "$NTFY_SERVER_URL" ] && echo "✅ $NTFY_SERVER_URL" || echo "❌")"
+          echo "ntfy Topic: $([ -n "$NTFY_TOPIC" ] && echo "✅ $NTFY_TOPIC" || echo "❌")"    
+
       - name: Run crawler
         env:
           FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
