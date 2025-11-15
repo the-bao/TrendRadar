@@ -3374,6 +3374,7 @@ def send_to_notifications(
 
     # 发送到 ntfy
     if ntfy_server_url and ntfy_topic:
+        print(f"ntfy_server_url:{ntfy_server_url}")
         results["ntfy"] = send_to_ntfy(
             ntfy_server_url,
             ntfy_topic,
